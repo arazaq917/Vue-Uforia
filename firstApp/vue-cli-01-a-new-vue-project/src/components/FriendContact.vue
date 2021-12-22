@@ -15,6 +15,7 @@
         {{ emailAddress }}
       </li>
     </ul>
+<button @click="$emit('delete',id)">Delete</button>
   </li>
 </template>
 <script>

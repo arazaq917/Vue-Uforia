@@ -14,6 +14,7 @@
         :email-address="friend.email"
         :is-favorite="friend.isFavorite"
         @favorite-friend="toggleFavoriteStatus"
+        @delete = "deleteContact"
       >
       </friend-contact>
     </ul>
@@ -56,6 +57,9 @@ export default {
         }
         this.friends.push(newFriendContact);
     },
+    deleteContact(friendId){
+      this.friends = this.friends.filter((friend)=>friend.id!== friendId)
+    }
   },
 };
 </script>
