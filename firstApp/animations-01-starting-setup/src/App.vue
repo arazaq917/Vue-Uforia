@@ -3,8 +3,14 @@
     <div class="block" :class="{animate: animatedBlock}"></div>
     <button @click="animateBlock">Animate</button>
   </div>
+  <div class="container">
+    <p v-if="toggleparagraph">This is toggle paragraph</p>
+    <button @click="TogglePg">Toggle Paragraph</button>
+  </div>
   <base-modal @close="hideDialog" v-if="dialogIsVisible">
+    <transition>
     <p>This is a test dialog!</p>
+    </transition>
     <button @click="hideDialog">Close it!</button>
   </base-modal>
   <div class="container">
@@ -18,6 +24,7 @@ export default {
     return {
       animatedBlock: false,
       dialogIsVisible: false,
+      toggleparagraph:false,
     };
   },
   methods: {
@@ -30,6 +37,9 @@ export default {
     animateBlock() {
       this.animatedBlock = true;
     },
+    TogglePg(){
+      this.toggleparagraph = !this.toggleparagraph;
+    }
   },
 };
 </script>
@@ -77,6 +87,20 @@ button:active {
   border-radius: 12px;
 }
 .animate{
-  transform: translateX(-150px);
+  /* transform: translateX(-150px); */
+  animation: slide-fade 0.3s ease-out forwards;
 }
+
+.v-enter-from{
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.v-enter-active{
+  transition: all 0.3s ease-out;
+}
+.v-enter-to{
+  opacity: 1;
+  transform: translateY(0);
+}
+
 </style>
