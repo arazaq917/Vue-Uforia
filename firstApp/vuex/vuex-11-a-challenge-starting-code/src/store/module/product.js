@@ -30,11 +30,11 @@ export default {
           price: 6.99,
         },
       ],
-      getters: {
-        products(state) {
-          return state.products;
-        },
-      },
     };
+  },
+  getters: {
+    products(state) {
+      return state.products;
+    },
   },
 };
